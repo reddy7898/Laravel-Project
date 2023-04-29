@@ -91,7 +91,8 @@ class ProductController extends Controller
         $product->update($request->all());
 
         //route after sucessfull/unsuccessfull creation
-        return redirect('products')->with('success','Product updated Sucessfully');    }
+        return redirect('products')->with('success','Product updated Sucessfully');    
+    }
 
     /**
      * Remove the specified resource from storage.
