@@ -24,6 +24,8 @@ Route::get('/register', [CustomAuthController::class, 'register']);
 Route::post('/registeruser', [CustomAuthController::class, 'registerUser'])->name('registeruser');
 Route::post('/resetpassword', [CustomAuthController::class, 'resetPassword'])->name('resetpassword');
 Route::post('/login-user', [CustomAuthController::class, 'loginUser'])->name('login-user');
+Route::get('/dashboard', [CustomAuthController::class, 'dashboard'])->middleware('isLoggedIn');
+Route::get('/logout', [CustomAuthController::class, 'logout']);
 // Route::get('/base/{name}', function ($name) {
 //     // return view('layouts.base');
 //     return "This is". $name; 
