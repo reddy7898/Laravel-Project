@@ -18,7 +18,10 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/contact', [PagesController::class, 'contact']);
 // Route::get('/details', [PagesController::class, 'details']);
 
-Route::resource('products', ProductController::class);
+Route::resource('product', ProductController::class);
+Route::get('/login', [CustomAuthController::class, 'login']);
+Route::get('/register', [CustomAuthController::class, 'register']);
+Route::post('/registeruser', [CustomAuthController::class, 'registerUser'])->name('registeruser');
 // Route::get('/base/{name}', function ($name) {
 //     // return view('layouts.base');
 //     return "This is". $name; 
