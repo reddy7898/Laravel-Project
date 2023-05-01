@@ -19,8 +19,8 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/details', [PagesController::class, 'details']);
 
 // Route::resource('product', ProductController::class);
-Route::get('/login', [CustomAuthController::class, 'login']);
-Route::get('/register', [CustomAuthController::class, 'register']);
+Route::get('/login', [CustomAuthController::class, 'login'])->middleware('alreadyLoggedIn');
+Route::get('/register', [CustomAuthController::class, 'register'])->middleware('alreadyLoggedIn');
 Route::post('/registeruser', [CustomAuthController::class, 'registerUser'])->name('registeruser');
 Route::post('/resetpassword', [CustomAuthController::class, 'resetPassword'])->name('resetpassword');
 Route::post('/login-user', [CustomAuthController::class, 'loginUser'])->name('login-user');
