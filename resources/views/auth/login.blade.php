@@ -6,7 +6,7 @@
 body {font-family: Arial, Helvetica, sans-serif;}
 form {border: 3px solid #f1f1f1;}
 
-input[type=text], input[type=password] {
+input[type=email], input[type=password] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -70,27 +70,32 @@ span.psw {
 
 <h2>Login Form</h2>
 
-<form action="/" method="post">
-  <div class="imgcontainer">
-    <img src="img_avatar2.png" alt="Avatar" class="avatar">
-  </div>
+<form action="{{route('login-user')}}" method="post">
+    @if(Session::has('success'))
+    <div class="alert alert-success">{{Session::get('success')}}</div>
+    @endif
+    @if(Session::has('failure'))
+    <div class="alert alert-danger">{{Session::get('failure')}}</div>
+    @endif
+    @csrf
 
   <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+    <label for="email"><b>Username</b></label>
+    <span class="text-danger">@error('email') {{$message}} @enderror</span>
+    <input type="email" placeholder="Enter Useremail" name="email" value="{{old('email')}}">
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <label for="password"><b>Password</b></label>
+    <span class="text-danger">@error('password') {{$message}} @enderror</span>
+    <input type="password" placeholder="Enter Password" name="password" value="{{old('password')}}">
         
     <button type="submit">Login</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
+
+    <a href="register" style="color:dodgerblue">New User !! Register Here</a>
   </div>
 
   <div class="container" style="background-color:#f1f1f1">
     <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
+    <span class="psw">Forgot <a href="resetpassword">password?</a></span>
   </div>
 </form>
 

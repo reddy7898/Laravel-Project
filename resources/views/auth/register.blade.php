@@ -21,11 +21,8 @@
       <label for="name"><b>Name</b></label>
       <span class="text-danger">@error('name') {{$message}} @enderror</span>
       <input type="text" placeholder="Enter Name" name="name" value="{{old('name')}}">
-      <label>
-        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-      </label>
   
-      <p>Already a User<a href="{{route('registeruser')}}" style="color:dodgerblue">Login</a>.</p>
+      <a href="login" style="color:dodgerblue">Already a User !! Login Here</a>
   
       <div class="clearfix">
         <button type="button" class="cancelbtn">Cancel</button>
